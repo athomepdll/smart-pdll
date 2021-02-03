@@ -9,18 +9,9 @@ http://tech.athome-solution.fr/tech/architecture
 
 ![Uml](http://yuml.me/diagram/plain/class/[Place]1-1[District],[Place]1-1[Department],[Place]1-1[City],[Place]1-1[Group],[City]0..*-1[City_Epci],[City_Epci]1-0..*[Epci],[District]0..*-1[District_Epci],[District_Epci]1-0..*[Epci],[Epci]0..*-[Epci],[Department]1-0..*[District],[District]1-0..*[City],[Epci]1-1[Siren_Insee],[DataType]1-0..*[Data],[DataLine]0..*-1[ImportLog],[Column]0..*-1[DataType],[Column]0..*-1[Config],[Config]1-1[ImportModel],[ImportType]1-0..*[ImportModel],[Domain]1-*[ImportModel_Domain],[ImportModel_Domain]*-1[ImportModel],[ImportModel]1-0..*[ImportLog],[Notification]1-1[ImportLog],[ImportLog]1-1[ImportMetadata],[DataLine]1-1..*[Data],[User]1-0..*[ImportLog],[ImportLog]0..*-1[Department],[DataLine]0..*-1[City])
 
-Clone docker environment
--------------------------
+
 ````
-git clone git@git.athome-solution.fr:athome/docker.git
-
-git checkout sgar/smart
-
-git clone git@git.athome-solution.fr:sgar/smart.git ./sources
-
-make && make start && make shell
-````
-In make shell :
+In shell :
 composer install
 ````
 php bin/console d:s:u -f
@@ -28,14 +19,14 @@ exit
 ````
 ````
 cd ./sources
-make yarn && make watch
+yarn install && yarn build (or npm)
 ````
 in .env : 
 ````
 APP_ENV=dev
 APP_HOST=localhost
 APP_HTTP=http
-APP_SECRET=2edbf108f20df22835c1b44ebb9fb5ed
+APP_SECRET=yoursecret
 
 ````
 
@@ -49,6 +40,7 @@ La base de données PostgreSQL needs the folowing extensions :
 tablefunc : 
 
 ````
+CREATE EXTENSION postgis;
 CREATE EXTENSION tablefunc;
 ````
 
