@@ -1,0 +1,76 @@
+{#{% form_theme form with easyadmin_config('design.form_theme') %}#}
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="panel panel-default mt-3">
+            <div class="mt-1 panel-heading">
+                <h1>Export expert</h1>
+            </div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+                <div class="form-row justify-content-start">
+                    <div class="col-8">
+                        {{ form_row(form.importModel) }}
+                    </div>
+                </div>
+                <div class="form-row justify-content-start">
+                    <div class="col-8">
+                        {{ form_row(form.year) }}
+                    </div>
+                </div>
+                <div class="form-row justify-content-lg-start">
+                    <div class="col-4">
+                        {{ form_row(form.submit) }}
+                        <hr>
+                    </div>
+                    <div class="col-4">
+                        {{ form_row(form.export) }}
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Année
+                    </th>
+                    <th scope="col">
+                        Nom du modèle
+                    </th>
+                    <th scope="col">
+                        Nom du fichier
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for importLog in importLogs %}
+                    <tr>
+                        <td>
+                            {{ importLog.year }}
+                        </td>
+                        <td>
+                            {{ importLog.importModel.name }}
+                        </td>
+                        <td>
+                            <a href="{{ path('export_expert_download', {'importLog': importLog.id}) }}" >
+                                {{ importLog.filePath }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}#SMART Pays-de-la-Loire{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('main') }}
+    {% endblock %}
+
+</head>
+<body>
+{% block navbar %}
+    <header id="headers" class="navbar" role="navigation">
+        <div class="navbar__container w-100 d-flex">
+            <a class="navbar__home" href="{{ path('data_visualization') }}">
+                <img class="navbar__logo mr-0" src="{{ asset('build/images/republique.82f18a83.png') }}"
+                     alt="template.data.gouv.fr"/>
+                <img src="{{ asset('build/images/prefecture.bc76f27f.png') }}" class="navbar__gouvfr"
+                     alt="logo préfecture pays de la loire"/>
+                <span class="navbar__domain font-weight-bolder px-2">#SMART Pays-de-la-Loire</span>
+            </a>
+            {% if app.user is defined and app.user is not null %}
+            <nav>
+                <ul class="nav__links">
+                    <li class="nav__item">
+                        <a type="button" class="btn" href="{{ path('help') }}">
+                            <i class="fa fa-info-circle"></i>
+                        </a>
+                    </li>
+                    <li class="nav__item"><a href="{{ path('data_visualization') }}">Visualiser</a></li>
+                    {% if is_granted('ROLE_EXPERT') %}
+                        <li class="nav__item"><a href="{{ path('export_expert_index') }}">Export expert</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav__item"><a
+                                    href="{{ path('easyadmin', {action: 'import_data'}) }}">Administration</a></li>
+                    {% endif %}
+                    <li class="nav__item"><a href="{{ path('user_notifications', {'user': app.user.id}) }}">
+                            {% if newNotifications is defined
+                                and newNotifications > 0 %}
+                                <span class="badge badge-danger">
+                                    {{ newNotifications }}<i class=" fas fa-bell"></i>
+                                </span>
+                            {% endif %} Notifications
+                        </a></li>
+                    <li class="nav__item {#border border-primary rounded#} h-pointer">
+                        <div class="dropdown">
+                            <div>
+                                <i class="fas fa-user"></i>
+                                <span class="p-1">{{ app.user.firstName ~ ' ' ~  app.user.lastName }}</span>
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="{{ path('user_read', {'user': app.user.id }) }}">Mon profil</a>
+                                <a href="{{ path('user_bundle_security_logout') }}">Déconnexion</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            {% else %}
+                <ul class="nav__links">
+                    <li class="nav__item">
+                        <a type="button" class="btn" href="{{ path('user_bundle_security_login') }}">
+                            <i class="fas fa-user"></i>
+                            Se connecter
+                        </a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+    </header>
+{% endblock %}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% block body %}
+{% endblock %}
+
+{# BANDEAU INFERIEUR #}
+
+{% block footer %}
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <ul class="footer__links">
+                <li>
+                    <h5>
+                        Propulsé par
+                        <a style="color: #007bff;" href="https://gitlab.com/SGAR_Pays-de-la-Loire/smart">#SMART</a>
+                        {{ app_version }} - logiciel libre sous licence AGPL v3
+                    </h5>
+                </li>
+            </ul>
+        </div>
+    </footer>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('bootstrap-js') }}
+    {{ encore_entry_script_tags('bootstrap-select') }}
+{% endblock %}
+</body>
+</html>

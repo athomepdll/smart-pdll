@@ -1,0 +1,21 @@
+core
+.idea
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+.env
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/bundles/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+/tmp

@@ -1,0 +1,18 @@
+athome_solution_import_bundle:
+    map:
+        data_column: App\Entity\Columns\DataColumn
+        data_text_column: App\Entity\Columns\DataTextColumn
+        data_bool_column: App\Entity\Columns\DataBoolColumn
+        data_date_column: App\Entity\Columns\DataDateColumn
+        data_percent_column: App\Entity\Columns\DataPercentColumn
+        data_int_column: App\Entity\Columns\DataIntColumn
+        data_float_column: App\Entity\Columns\DataFloatColumn
+        siren_carrier: App\Entity\Columns\SirenCarrierColumn
+        siren_root: App\Entity\Columns\SirenRootColumn
+    import_service_class: App\Services\ImportDataService
+    source: database
+    load_default: false
+    detector: '@'
+    factory: '@'
+    format:
+        - csv

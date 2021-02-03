@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="panel panel-default mt-3">
+            <div class="mt-1 panel-heading">
+                <h1>Notifications non lues</h1>
+            </div>
+            <table class="table table-bordered mt-3">
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Date de la donnée
+                    </th>
+                    <th scope="col">
+                        Nom du modèle de donnée
+                    </th>
+                    <th scope="col">
+                        Type de donnée
+                    </th>
+                    <th scope="col">
+                        Importé le
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for notification in notifications %}
+                    <tr>
+                        <td>
+                            {{ notification.importLog.year }}
+                        </td>
+                        <td>
+                            {{ notification.importLog.importModel.name }}
+                        </td>
+                        <td>
+                            {{ notification.importLog.importModel.importType.value }}
+                        </td>
+                        <td>
+                            {{ notification.importLog.createdAt|date('d/m/Y') }}
+                        </td>
+                        <td>
+                            <a href="{{ path('user_consume_notification',
+                                {'user': user.id, 'notification': notification.id}) }}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

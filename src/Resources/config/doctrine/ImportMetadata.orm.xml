@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\ImportMetadata" repository-class="App\Repository\ImportMetadataRepository"
+            table="import_metadata">
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="dataDate" type="datetime" nullable="true"/>
+        <field name="dataProvider" type="string" length="255" nullable="true"/>
+        <field name="emitterFirstName" type="string" length="30" nullable="true"/>
+        <field name="emitterLastName" type="string" length="30" nullable="true"/>
+        <field name="emitterMail" type="string" length="50" nullable="true"/>
+        <field name="emitterPhone" type="string" length="11" nullable="true"/>
+        <field name="serviceEmitter" type="string" length="255" nullable="true"/>
+
+        <one-to-one field="importLog" target-entity="App\Entity\ImportLog" mapped-by="importMetadata"/>
+    </entity>
+</doctrine-mapping>

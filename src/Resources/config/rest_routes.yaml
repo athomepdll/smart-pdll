@@ -1,0 +1,3 @@
+api:
+    resource: 'routes/rest/api.yaml'
+    type: rest

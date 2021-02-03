@@ -1,0 +1,21 @@
+{#{% form_theme form with easyadmin_config('design.form_theme') %}#}
+{% extends "@EasyAdmin/default/layout.html.twig" %}
+
+{% block content_title %}
+    Configuration de la page d'aide
+{% endblock %}
+{% block main %}
+    <div id="app">
+        <div>
+            <Markdown :input="{{ markdown|json_encode }}"/>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_javascript %}
+    <script src="https://unpkg.com/marked@0.3.6"></script>
+    <script src="https://unpkg.com/lodash@4.16.0"></script>
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('bootstrap-js') }}
+    {{ encore_entry_script_tags('bootstrap-select') }}
+{% endblock %}

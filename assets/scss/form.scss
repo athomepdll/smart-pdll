@@ -1,0 +1,17 @@
+.custom-file-label
+{
+  text-align: left !important;
+}
+.dropdown
+{
+  .bootstrap-select
+  {
+    .show-tick
+    {
+      .form-control
+      {
+        max-width: 200px !important;
+      }
+    }
+  }
+}

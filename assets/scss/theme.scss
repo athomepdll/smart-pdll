@@ -1,0 +1,68 @@
+:root {
+  /* Colors */
+  --blue: #0053b3 !important;
+  --light-blue: #006be6 !important;
+  --dark-blue: #003b80 !important;
+  --lighter-blue: #b4e1fa !important;
+  --white: #fff !important;
+  --lightest-grey: #fafbfc !important;
+  --lighter-grey: #ebeff3 !important;
+  --light-grey: #c9d3df !important;
+  --grey: #adb9c9 !important;
+  --dark-grey: #8393a7 !important;
+  --darker-grey: #53657d !important;
+  --darkest-grey: #26353f !important;
+  --black: #1c1c1c !important;
+  --green: #03bd5b !important;
+  --light-green: #daf5e7 !important;
+  --orange: #ff9947 !important;
+  --dark-orange: #cc5c00 !important;
+  --light-orange: #fff0e4 !important;
+  --red: #d63626 !important;
+  --dark-red: #ab2b1e !important;
+  --light-red: #efaca6 !important;
+
+  /* Breakpoints */
+  --mobile-min: 400px !important;
+  --mobile-max: 549px !important;
+  --phablet-min: 550px !important;
+  --phablet-max: 749px !important;
+  --tablet-min: 750px !important;
+  --tablet-max: 999px !important;
+  --desktop-min: 1000px !important;
+
+  /* Spaces */
+  --space-xs: 0.5em !important;
+  --space-s: 1em !important;
+  --space-m: 1.5em !important;
+  --space-l: 2em;
+  --space-xl: 3em;
+
+  /* Theme */
+  /* Theme */
+  --theme-primary: var(--blue);
+  --theme-primary-light: var(--light-blue);
+  --theme-primary-dark: var(--dark-blue);
+  --theme-secondary: var(--blue);
+  --theme-secondary-darken: var(--dark-blue);
+  --theme-border: var(--grey);
+  --theme-border-lighter: var(--light-grey);
+  --theme-border-active: var(--light-blue);
+  --theme-border-radius: 3px;
+  --theme-background-white: var(--white);
+  --theme-background-grey: var(--lighter-grey);
+  --theme-background-color: var(--dark-blue);
+  --theme-background-dark: var(--black);
+  --theme-box-shadow: 0 1px 2px rgba(201, 211, 223, 0.2);
+  --theme-label-text: var(--darker-grey);
+  --theme-light-text: var(--white);
+  --theme-dark-text: var(--darkest-grey);
+  --theme-success-border: var(--green);
+  --theme-success-bg: var(--light-green);
+  --theme-warning-border: var(--orange);
+  --theme-warning-bg: var(--light-orange);
+  --theme-error-border: var(--red);
+  --theme-error-bg: var(--light-red);
+  --theme-info-border: var(--light-blue);
+  --theme-info-bg: var(--lighter-blue);
+}

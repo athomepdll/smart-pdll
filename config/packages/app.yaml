@@ -1,0 +1,10 @@
+parameters:
+    app_version: 0.9.2
+    app_name: smart
+    import_file_path: /tmp/imports/
+    export_file_path: /tmp/exports/
+    insee_import_file_path: /tmp/imports/insee/
+    geojson_file_path: /geojson/
+    router.request_context.host: '%env(APP_HOST)%'
+    router.request_context.scheme: '%env(APP_HTTP)%'
+    router.request_context.base_url: ''

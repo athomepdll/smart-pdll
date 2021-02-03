@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container" id="app">
+        {% if help is not null %}
+            <div class="row">
+                <Help :input="{{ help.value|json_encode }}"/>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

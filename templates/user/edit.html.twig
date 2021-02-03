@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="panel">
+
+            <div class="panel__header">
+                <h1>Mon profil</h1>
+            </div>
+            <div id="app" class="bg-white p-3">
+                {{ form_start(form) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.firstName) }}
+                {{ form_row(form.lastName) }}
+                {{ form_row(form.plainPassword) }}
+
+                <department preference-department="{{ form.department.vars.value }}" form-name="{{ form.department.vars.full_name }}"></department>
+                <district preference-department="{{ form.district.vars.value  }}" form-name="{{ form.district.vars.full_name }}"></district>
+
+                <div class="row">
+                    <a class="btn btn-outline-primary" href="{{ path('user_read', {'user': user.id }) }}">
+                        {{ 'user.actions.cancel'|trans }}
+                    </a>
+                    {{ form_widget(form.submit) }}
+                </div>
+                {% do form.department.setRendered %}
+                {% do form.district.setRendered %}
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

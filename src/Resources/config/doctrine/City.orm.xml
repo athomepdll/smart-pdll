@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\City" repository-class="App\Repository\CityRepository"
+            table="city">
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="name" type="string" nullable="true" length="510"/>
+        <field name="siren" type="string" nullable="true" length="30"/>
+        <field name="insee" type="string" nullable="false" length="10"/>
+        <field name="year" type="integer" nullable="true" length="5"/>
+
+        <many-to-one field="actualCity" target-entity="App\Entity\City"/>
+        <many-to-one field="district" target-entity="App\Entity\District" inversed-by="cities"/>
+        <many-to-many field="epcis" target-entity="App\Entity\Epci" inversed-by="cities">
+            <join-table name="city_epci">
+                <join-columns>
+                    <join-column name="city_id" referenced-column-name="id"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="epci_id" referenced-column-name="id"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,51 @@
+rest_carrying_structure:
+    resource: App\Controller\CarryingStructureController
+    type: rest
+
+rest_city:
+    resource: App\Controller\CityController
+    type: rest
+
+rest_data:
+    resource: App\Controller\DataController
+    type: rest
+
+rest_data_column:
+    resource: App\Controller\DataColumnController
+    type: rest
+
+rest_data_view:
+    resource: App\Controller\DataViewController
+    type: rest
+
+rest_department:
+    resource: App\Controller\DepartmentController
+    type: rest
+
+rest_district:
+    resource: App\Controller\DistrictController
+    type: rest
+
+rest_enumeration:
+    resource: App\Controller\EnumerationController
+    type: rest
+
+rest_epci:
+    resource: App\Controller\EpciController
+    type: rest
+
+rest_import_insee_status:
+    resource: App\Controller\ImportExportController
+    type: rest
+
+rest_import_log:
+    resource: App\Controller\ImportLogController
+    type: rest
+
+rest_import_model:
+    resource: App\Controller\ImportModelController
+    type: rest
+
+rest_place:
+    resource: App\Controller\PlaceController
+    type: rest

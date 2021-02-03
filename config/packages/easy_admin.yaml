@@ -1,0 +1,106 @@
+easy_admin:
+    translation_domain: 'messages'
+    user:
+        name_property_path: 'firstName'
+    site_name: 'SMART'
+    formats:
+        datetime: 'd/m/Y H:i'
+        number: '%.0f'
+    design:
+        menu:
+            - { label: 'Administration'}
+            - { entity: 'User',
+                label: 'Users',
+                icon: 'user' }
+            - { label: 'INSEE',
+                icon: 'database',
+                route: 'easyadmin', params: { action: 'regional_perimeter' }}
+            - { label: 'Export INSEE',
+                icon: 'database',
+                route: 'easyadmin', params: { action: 'export_regional_perimeter' }}
+            - { label: "Page d'aide",
+                icon: 'pen',
+                route: 'easyadmin', params: { action: 'help_markdown' }}
+            - { label: 'Importer' }
+            - { entity: 'ImportLog',
+                label: 'Historique des imports',
+                icon: 'history'}
+            - { label: 'Import',
+                icon: 'database',
+                route: 'easyadmin', params: { action: 'import_data' }}
+            - { entity: 'ImportModel',
+                label: 'Modèles import',
+                icon: 'database' }
+            - { label: 'INSEE',
+                icon: 'database',
+                route: 'easyadmin', params: { action: 'regional_perimeter' }}
+            - { label: 'Export INSEE',
+                icon: 'database',
+                route: 'easyadmin', params: { action: 'export_regional_perimeter' }}
+            - { label: 'Application' }
+            - { label: 'Retour à la visualisation',
+                icon: 'bars',
+                route: 'data_visualization'}
+    entities:
+        User:
+            controller: App\Controller\AdminUserController
+            class: App\Entity\User
+            list:
+                actions: ['-delete']
+                fields: ['email', 'firstName', 'lastName', 'roles', 'enabled']
+            edit:
+                fields:
+                    - 'email'
+                    - 'roles'
+                    - {label: 'Mot de passe', property: plainPassword, type: 'password', type_options: {required: false}}
+                    - 'enabled'
+                    - {property: 'firstName', label: 'Prénom', type_options: {required: true}}
+                    - {property: 'lastName', label: 'Nom', type_options: {required: true}}
+            new:
+                fields:
+                    - 'email'
+                    - 'roles'
+                    - {label: 'Mot de passe', property: plainPassword, type: 'password', type_options: {required: true}}
+                    - 'enabled'
+                    - {property: 'firstName', label: 'Prénom', type_options: {required: true}}
+                    - {property: 'lastName', label: 'Nom', type_options: {required: true}}
+
+        ImportLog:
+            class: App\Entity\ImportLog
+            show:
+                actions: ['-delete', '-edit']
+                fields:
+                    - 'year'
+                    - 'department'
+                    - 'filePath'
+                    - 'createdAt'
+                    - { property: 'status', template: 'admin/fields/trans_field.html.twig' }
+                    - 'importModel'
+            list:
+                actions: ['show', 'download', 'deleteLog', '-edit', '-new', '-delete']
+                fields:
+                    - 'year'
+                    - 'department'
+                    - 'filePath'
+                    - 'createdAt'
+                    - { property: 'status', template: 'admin/fields/trans_field.html.twig' }
+                    - 'importModel'
+                dql_filter: 'entity.isDisabled = false'
+        ImportModel:
+            class: App\Entity\ImportModel
+            templates:
+                list: 'admin/import_model/list.html.twig'
+            show:
+                actions: ['-edit', '-delete']
+                fields: ['name', 'isMapView', 'createdAt', 'importType']
+            list:
+                actions:
+                    - { name: 'new', label: 'Créer un nouveau modèle' }
+                #                    - { name: 'show', label: 'Voir' }
+                fields:
+                    - 'id'
+                    - 'name'
+                    - 'isMapView'
+                    - 'createdAt'
+                    - 'importType'
+                    - { property: 'color', template: 'admin/import_model/fields/color.html.twig'}

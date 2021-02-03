@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="app" class="container-fluid">
+
+        <div class="row justify-content-around px-5 py-4 flex-nowrap section-grey">
+            <filters-container></filters-container>
+            <data-container></data-container>
+        </div>
+        <modal-city></modal-city>
+        <modal-details></modal-details>
+        <modal-indicator></modal-indicator>
+    </div>
+
+{% endblock%}

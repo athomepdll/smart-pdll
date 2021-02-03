@@ -1,0 +1,47 @@
+{% form_theme form with easyadmin_config('design.form_theme') %}
+{% extends "@EasyAdmin/default/layout.html.twig" %}
+
+{% block head_stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+    {{ parent() }}
+{% endblock %}
+
+{% block content_title %}
+    {% spaceless %}
+        Import des données INSEE
+    {% endspaceless %}
+{% endblock %}
+
+{% block content_footer_wrapper '' %}
+
+{% block main %}
+    <div id="app">
+        <flash-message class="myCustomClass"></flash-message>
+        {{ form_start(form) }}
+        {% block entity_form %}
+            {{ form_row(form.year) }}
+            {{ form_row(form.regional_perimeter) }}
+            {{ form_row(form.insee_siren) }}
+            {{ form_row(form.cities) }}
+            {{ form_row(form.new_cities) }}
+
+            <section class="content-footer">
+                <div class="form-actions">
+                    <div>
+                        <insee name="{{ form.submit.vars.full_name }}" id="{{ form.submit.vars.id }}"
+                               path="{{ url('post_importexport_isrunning') }}"></insee>
+                    </div>
+                </div>
+            </section>
+            {{ form_widget(form._token) }}
+        {% endblock entity_form %}
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+{% endblock %}
+
+
+{% block body_javascript %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+

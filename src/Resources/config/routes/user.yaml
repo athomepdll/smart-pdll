@@ -1,0 +1,12 @@
+user_edit:
+    path: /{user}/edit
+    controller: App\Controller\UserController::edit
+user_read:
+    path: /{user}
+    controller: App\Controller\UserController::read
+user_notifications:
+    path: /{user}/notifications
+    controller: App\Controller\UserController::notifications
+user_consume_notification:
+    path: /{user}/notifications/{notification}
+    controller: App\Controller\UserController::consumeNotification

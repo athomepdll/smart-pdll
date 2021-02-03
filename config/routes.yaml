@@ -1,0 +1,19 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+athome_solution_import_bundle:
+    resource: '@AthomeSolutionImportBundle/Resources/config/routing.yaml'
+
+app_security:
+    resource: '@AthomeUserBundle/Resources/config/routing/security.yaml'
+
+app_routing:
+    resource: '../src/Resources/config/routes.yaml'
+
+rest_resource:
+    prefix: /api
+    resource: '../src/Resources/config/rest_routes.yaml'
+    type: rest
+
+user_bundle_security_logout:
+    path: /security/logout

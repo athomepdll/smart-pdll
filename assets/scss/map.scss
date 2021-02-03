@@ -1,0 +1,83 @@
+.dot {
+  border-radius: 50%;
+  border: solid 1px grey;
+  bottom: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.dot-legend {
+  position: absolute;
+  right: 0.5em;
+  z-index: 2;
+  width: 120px;
+  border-bottom: solid 1px grey;
+  text-align: right;
+}
+
+.legend-block {
+  width: 200px;
+  height: 200px;
+  border: solid 0.2px black;
+  resize: both;
+}
+
+.legend-background {
+  background: white;
+  opacity: 1;
+  height: 99%;
+  width: 99%;
+  position: absolute;
+  z-index: 1;
+}
+
+.legend-list {
+  position: relative;
+  z-index: 2;
+}
+
+.legend-infos {
+  position: relative;
+  z-index: 2;
+}
+
+.legend-import-model {
+  width:2.5em;
+  height:0.5em;
+}
+
+.financial-legend-title {
+  position: relative;
+  z-index: 2;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.financial-legend-sum {
+  position: relative;
+  z-index: 2;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.pie-color1 {
+  background-color: #FFD000;
+}
+
+.pie-color2 {
+  background-color: #FFA400;
+}
+
+.pie-color3 {
+  background-color: #FF8800;
+}
+
+.pie-color4 {
+  background-color: #FF5200;
+}
+
+.pie-color5 {
+  background-color: #0008FF;
+}
+
+

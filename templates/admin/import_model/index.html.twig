@@ -1,0 +1,33 @@
+{#{% form_theme form with easyadmin_config('design.form_theme') %}#}
+{% extends "@EasyAdmin/default/layout.html.twig" %}
+
+{% block head_stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+    {{ parent() }}
+{% endblock %}
+
+{% block content_title %}
+    {% spaceless %}
+        Modèles d'import
+    {% endspaceless %}
+{% endblock %}
+
+{% block content_footer_wrapper '' %}
+
+{% block main %}
+    <div id="app">
+        <flash-message class="myCustomClass"></flash-message>
+        <table class="table datagrid">
+            <tbody>
+                {% for importModel in importModels %}
+                    <tr>
+                        <td>{{ importModel.id }}</td>
+                        <td>{{ importModel.name }}</td>
+                        <td>{{ importModel.isMapView }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

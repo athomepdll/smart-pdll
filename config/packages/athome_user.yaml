@@ -1,0 +1,4 @@
+athome_user:
+    user_class: App\Entity\User
+    from_email: 'no-reply@email.com'
+    enable_on_registration: false #not mandatory : default to true

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="AthomeSolution\ImportBundle\Entity\Column" table="columns" inheritance-type="SINGLE_TABLE">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <discriminator-column name="discr" type="string"/>
+        <discriminator-map>
+            <discriminator-mapping value="column" class="AthomeSolution\ImportBundle\Entity\Column"/>
+            <discriminator-mapping value="text_column" class="AthomeSolution\ImportBundle\Entity\Column"/>
+            <discriminator-mapping value="data_column" class="App\Entity\Columns\DataColumn"/>
+            <discriminator-mapping value="data_text_column" class="App\Entity\Columns\DataTextColumn"/>
+            <discriminator-mapping value="data_date_column" class="App\Entity\Columns\DataDateColumn"/>
+            <discriminator-mapping value="data_bool_column" class="App\Entity\Columns\DataBoolColumn"/>
+            <discriminator-mapping value="data_percent_column" class="App\Entity\Columns\DataPercentColumn"/>
+        </discriminator-map>
+
+        <field name="columnName" type="string" nullable="true"/>
+        <field name="class" type="string" nullable="true"/>
+        <field name="method" type="string" nullable="false"/>
+        <field name="attribute" type="string" nullable="false"/>
+        <field name="identifier" type="string" nullable="false"/>
+
+        <many-to-one field="config" target-entity="AthomeSolution\ImportBundle\Entity\Config" inversed-by="columns"/>
+    </entity>
+</doctrine-mapping>

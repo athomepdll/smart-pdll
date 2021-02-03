@@ -1,0 +1,51 @@
+#map:
+#    path: /
+#    controller: App\Controller\DefaultController:index
+
+data_visualization:
+    path: /
+    controller: App\Controller\DataVisualizationController:index
+
+rest_geojson:
+    path: /geojson
+    controller: App\Controller\GeojsonController::getGeojson
+
+import_cities_geojson:
+    path: /geojson/import/cities
+    controller: App\Controller\GeojsonController::importCities
+
+import_departments_geojson:
+    path: /geojson/import/departments
+    controller: App\Controller\GeojsonController::importDepartments
+
+import_districts_geojson:
+    path: /geojson/import/districts
+    controller: App\Controller\GeojsonController::importDistricts
+
+import_epcis_geojson:
+    path: /geojson/import/epcis
+    controller: App\Controller\GeojsonController::importEpcis
+
+export_expert_index:
+    path: /export_expert/
+    controller: App\Controller\ExportExpertController::index
+
+export_expert_download:
+    path: /export_expert/{importLog}/download
+    controller: App\Controller\ExportExpertController::download
+
+territory_portrait:
+    path: /territory_portrait
+    controller: App\Controller\TerritoryPortraitController:getTerritoryPortrait
+
+user_preferences:
+    path: /preferences
+    controller: App\Controller\UserController::preferencesAction
+
+user_session_check:
+    path: /session_check
+    controller: App\Controller\UserController::checkSession
+
+help:
+    path: /help
+    controller: App\Controller\UserController::help

@@ -1,0 +1,34 @@
+{% form_theme form with easyadmin_config('design.form_theme') %}
+{% extends "@EasyAdmin/default/layout.html.twig" %}
+
+{% block head_stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+    {{ parent() }}
+{% endblock %}
+
+{% block content_title %}
+    {% spaceless %}
+        Export des données INSEE
+    {% endspaceless %}
+{% endblock %}
+
+{% block content_footer_wrapper '' %}
+
+{% block main %}
+    <div id="app">
+        {{ form_start(form) }}
+        {% block entity_form %}
+            {{ form_row(form.year) }}
+            <section class="content-footer">
+                <div class="form-actions">
+                    {{ form_row(form.submit) }}
+                </div>
+            </section>
+        {% endblock entity_form %}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+
+

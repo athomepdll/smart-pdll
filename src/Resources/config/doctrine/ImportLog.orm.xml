@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\ImportLog" repository-class="App\Repository\ImportLogRepository"
+            table="import_log">
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="year" type="integer" nullable="false"/>
+        <field name="filePath" type="string" length="255" nullable="true"/>
+        <field name="status" type="string" length="15" nullable="true"/>
+        <field name="isDisabled" type="boolean" nullable="true"/>
+
+        <one-to-one field="importMetadata" target-entity="App\Entity\ImportMetadata" inversed-by="importLog">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-one>
+        <many-to-one field="importModel" target-entity="App\Entity\ImportModel" inversed-by="importLogs"/>
+        <many-to-one field="department" target-entity="App\Entity\Department"/>
+        <many-to-one field="user" target-entity="App\Entity\User"/>
+        <one-to-many field="dataLines" target-entity="App\Entity\DataLine" mapped-by="importLog">
+            <cascade>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+
+        <field name="createdAt" type="datetime" column="created_at" nullable="false">
+            <gedmo:timestampable on="create"/>
+        </field>
+        <field name="updatedAt" type="datetime" column="updated_at" nullable="false">
+            <gedmo:timestampable on="update"/>
+        </field>
+
+    </entity>
+</doctrine-mapping>

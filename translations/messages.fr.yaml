@@ -1,0 +1,69 @@
+Download: Télécharger
+Created at: Créé le
+Status: Statut
+Import model: Modèle d'import
+File path: Fichier source
+Department: Département
+Year: Année
+Is map view: Vue cartographique
+Name: Nom
+Import type: Type d'import
+Delete log: Supprimer
+Color: Couleur
+Enabled: Activé
+First name: Prénom
+Last name: Nom
+success: Succès
+error: Erreur
+new: Nouveau
+Users: Utilisateurs
+ImportLog: Historique d'import
+duplicate_header: Le fichier contient des en-têtes dupliquées.
+general:
+    year: Année
+    department: Département
+import_model:
+    form:
+        domains: Domaines
+        color: Couleur d'affichage
+import_log:
+    form:
+        import_model: Type d'import
+        created_ad: Date de l'import
+        year: Millésime
+        data_date: Date des données
+        user: Utilisateur
+        file_name: Libellé du fichier
+        data_provider: Fournisseur de la donnée
+        service_emitter: Service émetteur
+        emitter_last_name: Nom émetteur
+        emitter_first_name: Prénom émetteur
+        emitter_mail: Mail émetteur
+        emitter_phone: Téléphone émetteur
+        is_replace: Annule et remplace
+
+# Security
+security:
+    login:
+        username: Nom d'utilisateur
+        password: Mot de passe
+        remember_me: Se souvenir de moi
+        submit: Se connecter
+
+# User
+user:
+    form:
+        firstname: Prénom
+        lastname: Nom
+        password: Nouveau mot de passe
+        department: Département
+        district: Arrondissement
+    actions:
+        edit: Modifier
+        cancel: Annuler
+        submit: Envoyer
+    read:
+        firstname: Prénom
+        lastname: Nom
+        department: Département
+        district: District

@@ -1,0 +1,62 @@
+{% form_theme form with easyadmin_config('design.form_theme') %}
+{% extends "@EasyAdmin/default/layout.html.twig" %}
+
+{% block head_stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+    {{ parent() }}
+{% endblock %}
+
+{% block content_title %}
+    {% spaceless %}
+        Edition du modèle d'import
+    {% endspaceless %}
+{% endblock %}
+
+{% block content_footer_wrapper '' %}
+
+{% block main %}
+    <div id="app">
+        {{ form_start(form) }}
+        {% block entity_form %}
+            <div>
+                <div class="row">
+                    <div class="col-6">
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.config) }}
+                        {{ form_row(form.importType) }}
+                        {{ form_row(form.isMapView) }}
+                        {{ form_row(form.color) }}
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(form.domains) }}
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <column-component :config="{{ config }}" :is-editable="{{ isEditable }}" ></column-component>
+                    </div>
+                    <div class="col">
+                        <section class="content-footer">
+                            <div class="form-actions justify-content-between">
+                                {{ form_row(form.submit) }}
+                                <div class="form-group">
+                                    <a class="btn btn-secondary action-list" href="{{ path('easyadmin', {'entity': 'ImportModel'}) }}">Retour à la liste</a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        {% endblock entity_form %}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block body_javascript %}
+    {{ encore_entry_script_tags('bootstrap-js') }}
+    {{ encore_entry_script_tags('bootstrap-select') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+

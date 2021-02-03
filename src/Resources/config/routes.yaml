@@ -1,0 +1,6 @@
+default:
+    resource: 'routes/routes.yaml'
+
+users:
+    resource: 'routes/user.yaml'
+    prefix: /users

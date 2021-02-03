@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="panel">
+            <div class="panel__header">
+                <h1>Mon profil</h1>
+            </div>
+            <div>
+                <div class="row">
+                    <p><strong>{{ 'user.read.firstname'|trans }}</strong> : {{ user.firstName }}</p>
+                </div>
+                <div class="row">
+                    <p><strong>{{ 'user.read.lastname'|trans }}</strong> : {{ user.lastName }}</p>
+                </div>
+                <div class="row">
+                    <p><strong>{{ 'user.read.department'|trans }} :</strong> {% if user.department is not null %} {{ user.department.name }} {% endif %} </p>
+                </div><div class="row">
+                    <p><strong>{{ 'user.read.district'|trans }} :</strong> {% if user.district is not null %} {{ user.district.name }} {% endif %} </p>
+                </div>
+                <div class="row justify-content-end">
+                    <a class="button" href="{{ path('user_edit', {'user': user.id}) }}">
+                        <i class="fa fa-pen"></i> {{ 'user.actions.edit'|trans }}
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

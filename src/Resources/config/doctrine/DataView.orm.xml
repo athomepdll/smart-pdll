@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\DataView"
+            table="data_view" read-only="true">
+
+        <id name="id" column="data_view_id" type="integer"/>
+        <field name="sirenCarrier" type="string"/>
+        <field name="value" type="string"/>
+        <field name="year" type="integer"/>
+        <field name="columnName" type="string"/>
+
+        <many-to-one field="district" target-entity="App\Entity\District"/>
+        <many-to-one field="city" target-entity="App\Entity\City"/>
+        <many-to-one field="department" target-entity="App\Entity\Department"/>
+        <many-to-one field="importModel" target-entity="App\Entity\ImportModel"/>
+        <many-to-one field="dataLevel" target-entity="App\Entity\DataLevel"/>
+        <many-to-one field="dataLine" target-entity="App\Entity\DataLine"/>
+    </entity>
+</doctrine-mapping>

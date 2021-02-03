@@ -1,0 +1,115 @@
+{#{% form_theme form with easyadmin_config('design.form_theme') %}#}
+{% extends "@EasyAdmin/default/layout.html.twig" %}
+
+{% block head_stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content_title %}
+    {% spaceless %}
+        Nouvel import de données
+    {% endspaceless %}
+{% endblock %}
+
+{% block content_footer_wrapper '' %}
+
+{% block main %}
+<div id="app" cla>
+    {{ form_start(form) }}
+    {% block entity_form %}
+    <div class="form-row justify-content-center">
+        <div class="col-4">
+            {{ form_row(form.importModel) }}
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="col-4">
+            {{ form_row(form.department) }}
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="col-4">
+            {{ form_row(form.year) }}
+        </div>
+        <div class="col-4">
+            <div class="form-group d-block">
+                {{ form_label(form.uploadedFile) }}
+                {{ form_widget(form.uploadedFile) }}
+            </div>
+        </div>
+
+    </div>
+    <div class="offset-2 col-8">
+        <hr>
+    </div>
+
+    <div class="form-row justify-content-center">
+        {# input metadata #}
+        <div class="col-4">
+            <div class="form-group d-block">
+                {{ form_label(form.importMetadata.dataDate) }}
+                <div class="d-flex justify-content-between">
+                    <div class="col-4 pl-0">
+                        {{ form_widget(form.importMetadata.dataDate.day) }}
+                    </div>
+                    <div class="col-4">
+                        {{ form_widget(form.importMetadata.dataDate.month) }}
+                    </div>
+                    <div class="col-4 pr-0">
+                        {{ form_widget(form.importMetadata.dataDate.year) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="col-4">
+            {{ form_row(form.importMetadata.dataProvider) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.importMetadata.serviceEmitter) }}
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="col-4">
+            {{ form_row(form.importMetadata.emitterFirstName) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.importMetadata.emitterLastName) }}
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="col-4">
+            {{ form_row(form.importMetadata.emitterPhone) }}
+        </div>
+        <div class="col-4">
+            {{ form_row(form.importMetadata.emitterMail) }}
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="col-8">
+            <div class="form-group justify-content-end">
+                <div class="col-auto">
+                    {{ form_label(form.isReplace) }}
+                    {{ form_widget(form.isReplace) }}
+                </div>
+                <div class="col-auto pr-0">
+
+                    {{ form_row(form.submit) }}
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+        </div>
+        {% endblock entity_form %}
+        {{ form_end(form) }}
+    </div>
+    {% endblock %}
+
+    {% block body_javascript %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+
