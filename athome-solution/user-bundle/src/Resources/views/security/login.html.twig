@@ -1,0 +1,26 @@
+{% extends '@AthomeUser/layout.html.twig' %}
+
+{% block title %}{{ 'login'|trans }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <form role="form" method="post" action="{{ path('user_bundle_security_login') }}">
+        <div>
+            <label for="email"></label>
+            <input type="text" name="email" placeholder="Email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="********" required autocomplete="off">
+        </div>
+
+        <div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+            <button type="submit">Login</button>
+        </div>
+
+        <div class="forgotpw mt-5 text-center">
+            <p class="text-center"><a href="{{ path('user_bundle_security_password_request') }}" title="Click here to reset your password">Forget your password ?</a> </p>
+        </div>
+
+    </form>
+{% endblock %}

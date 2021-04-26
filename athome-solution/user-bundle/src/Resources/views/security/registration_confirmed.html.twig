@@ -1,0 +1,11 @@
+{% extends '@AthomeUser/layout.html.twig' %}
+
+{% block title %}{{ 'login'|trans }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <p>{{ 'user_bundle.account_activated'|trans }}</p>
+
+    <div class="forgotpw mt-5 text-center">
+        <p class="text-center"><a href="{{ path('user_bundle_security_login') }}" title="Click here to login">Login</a> </p>
+    </div>
+{% endblock %}

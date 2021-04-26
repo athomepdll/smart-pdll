@@ -1,0 +1,25 @@
+{
+  "name": "athome-solution/user-bundle",
+  "description": "Bundle for manage user",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Joel LAURET",
+      "email": "joel.lauret@athome-solution.fr"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "symfony/form": "*",
+    "symfony/framework-bundle": "^4.2",
+    "symfony/orm-pack": "*",
+    "symfony/security-bundle": "4.2.*",
+    "symfony/validator": "*"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "*"
+  },
+  "autoload": {
+    "psr-4": { "Athome\\UserBundle\\": "src" }
+  }
+}

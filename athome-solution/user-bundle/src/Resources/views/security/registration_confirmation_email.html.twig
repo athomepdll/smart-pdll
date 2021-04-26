@@ -1,0 +1,7 @@
+{% block subject %}{{ 'reset_password'|trans }}{% endblock %}
+
+{% block body %}
+    Bonjour {{ user.email }}
+
+    Voici le lien d'activation de votre compte : <a href="{{ absolute_url(path('user_bundle_security_register_confirmation', { 'token': user.confirmationToken })) }}">ICI</a>
+{% endblock %}

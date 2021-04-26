@@ -1,0 +1,3 @@
+index:
+    path: /index
+    controller: AthomeSolutionImportBundle:Default:index

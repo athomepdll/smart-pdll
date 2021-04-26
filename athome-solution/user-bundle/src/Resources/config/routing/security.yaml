@@ -1,0 +1,26 @@
+user_bundle_security_login:
+  path: /login
+  controller: Athome\UserBundle\Controller\SecurityController::loginAction
+
+user_bundle_security_logout:
+  path: /logout
+
+user_bundle_security_register:
+  path: /register
+  controller: Athome\UserBundle\Controller\RegisterController::registerAction
+
+user_bundle_security_register_confirmation:
+  path: /register/confirm/{token}
+  controller: Athome\UserBundle\Controller\RegisterController::confirmAction
+
+user_bundle_security_password_request:
+  path: /password/request
+  controller: Athome\UserBundle\Controller\ForgotPasswordController::requestAction
+
+user_bundle_security_password_reset:
+  path: /password/reset/{token}
+  controller: Athome\UserBundle\Controller\ForgotPasswordController::resetAction
+
+user_bundle_account_edit:
+  path: /account/update
+  controller: Athome\UserBundle\Controller\EditAccountController::editAction

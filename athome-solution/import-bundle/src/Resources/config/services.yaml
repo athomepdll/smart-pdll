@@ -1,0 +1,52 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false
+
+    # Services
+    AthomeSolution\ImportBundle\Services\:
+        resource: '../../Services/*'
+
+    # Services
+    AthomeSolution\ImportBundle\Repository\:
+        resource: '../../Repository/*'
+
+    # Services
+    AthomeSolution\ImportBundle\Manager\:
+        resource: '../../Manager/*'
+
+    athome_solution.import_service:
+        class: AthomeSolution\ImportBundle\Services\ImportService
+        public: true
+        autowire: true
+
+    athome_import_config_data_processor_specification:
+        class: AthomeSolution\ImportBundle\Services\ConfigSpecification\DataProcessorSpecification
+        tags:
+        - { name: athome_import.default, priority: 10 }
+
+    athome_import_config_database_specification:
+        arguments:
+        - "@doctrine.orm.entity_manager"
+        class: AthomeSolution\ImportBundle\Services\ConfigSpecification\DatabaseSpecification
+        tags:
+        - { name: athome_import.default, priority: 10 }
+
+    athome_import.format_specification:
+        class: AthomeSolution\ImportBundle\Services\FormatSpecification\FormatSpecification
+        tags:
+        - { name: athome_import.format_specification.csv }
+
+    athome_import.format_manager.csv:
+        class: AthomeSolution\ImportBundle\Services\FormatManager\CsvFormatManager
+        tags:
+        - { name: athome_import.format_manager }
+
+    athome_import.map_discriminator.listener:
+        class: AthomeSolution\ImportBundle\EventListener\MapDiscriminatorListener
+        arguments:
+        - '%bundle.map%'
+        tags:
+        - { name: doctrine.event_listener, event: loadClassMetadata }
